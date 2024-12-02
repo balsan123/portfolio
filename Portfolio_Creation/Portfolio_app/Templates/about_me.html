@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .profile-section {
+            margin-bottom: 20px;
+        }
+        .user-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .profile-section h3 {
+            color: #007BFF;
+        }
+        .profile-section p {
+            font-size: 1.1rem;
+            color: #f8f9fa;
+        }
+        .btn-primary {
+            background-color: #388E3C;
+            border-color: #388E3C;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2E7D32;
+            border-color: #2E7D32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="profile-section">
+            <p class="user-name">{{ user_profile.name }}</p>
+        </div>
+
+        <div class="profile-section">
+            <p>
+                {{ user_profile.about }}
+            </p>
+        </div>
+
+        <div class="profile-section">
+            <p>{{ user_profile.skills }}</p>
+        </div>
+
+        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+</body>
+</html>

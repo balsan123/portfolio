@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%
+            max-width: 800px;
+            margin: 70px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .certification-details {
+            margin-top: 20px;
+        }
+
+        .certification-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .certification-item p {
+            margin: 5px 0;
+            color: #555;
+
+        }
+
+        .certification-item a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .certification-item a:hover {
+            color: green;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="certification-details">
+            {% if certification %}
+                {% for certification in certification %}
+                <div class="certification-item">
+                    <p>
+                        <strong>{{ certification.name }}</strong>, issued by <strong>{{ certification.issued_by }}</strong>
+                        on <strong>{{ certification.date_issued }}</strong>.
+                        Description: {{ certification.description }}.
+                        {% if certification.url %}
+                        Credential URL: <a href="{{ certification.url }}" target="_blank">{{ certification.url }}</a>.
+                        {% endif %}
+                    </p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No certifications available.</p>
+            {% endif %}
+        </div>
+        <div class="back-link">
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
+
+
+</body>
+</html>

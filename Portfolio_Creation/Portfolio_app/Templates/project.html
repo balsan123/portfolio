@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            max-width: 800px;
+            margin: 70px auto;
+            padding: 40px;
+            background-color: #4CAF50;
+            border-radius: 8px;
+            color: black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .project-details {
+            line-height: 1.6;
+            color: white;
+        }
+        .project-details p {
+            margin: 0;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-link a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="project-details">
+            {% if project %}
+                <p>
+                    <strong>{{ project.title }}</strong> uses technologies such as
+                    <strong>{{ project.technologies_used }}</strong>. Published on
+                    <strong>{{ project.published }}</strong>, this project focuses on
+                    {{ project.description }}.
+                    {% if project.url %}
+                    You can view more details at: <a href="{{ project.url }}" target="_blank">{{ project.url }}</a>.
+                    {% endif %}
+                </p>
+            {% else %}
+                <p>No project details available.</p>
+            {% endif %}
+        </div>
+        <div class="back-link">
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Certification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        form button {
+            align-self: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        .certification-list {
+            margin-top: 20px;
+        }
+
+        .certification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .certification-item:last-child {
+            border-bottom: none;
+        }
+
+        .certification-item span {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .certification-item a {
+            padding: 8px 12px;
+            text-decoration: none;
+            font-size: 14px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .certification-item a:hover {
+            background-color: #0056b3;
+        }
+
+        .no-certifications {
+            text-align: center;
+            font-size: 16px;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #6c757d;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Certification</button>
+        </form>
+
+        <h2>Existing Certifications</h2>
+        <div class="certification-list">
+            {% for certification in certifications %}
+            <div class="certification-item">
+                <span>{{ certification.name }} - {{ certification.issued_by }}</span>
+                <a href="{% url 'edit_certification' certification.id %}">Edit</a>
+            </div>
+            {% empty %}
+            <p class="no-certifications">No certifications added yet.</p>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'home' %}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>

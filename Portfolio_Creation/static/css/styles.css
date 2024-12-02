@@ -1,0 +1,43 @@
+
+
+body {
+    background-image: url("{% static 'images/background.jpg' %}"); /* Path to your background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Keep the background fixed during scroll */
+    color: white; /* Change text color to white for better contrast */
+    font-family: Arial, sans-serif; /* Set a default font */
+}
+
+h1, h2 {
+    text-align: center; /* Center align headings */
+    margin-top: 20px; /* Add some space above headings */
+}
+
+form {
+    max-width: 400px; /* Set a max width for forms */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px; /* Add padding inside the form */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow to the form */
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Add padding to input fields */
+    margin: 10px 0; /* Add space between fields */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+input[type="submit"] {
+    background: #4CAF50; /* Green background for submit button */
+    color: white; /* White text for the button */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+input[type="submit"]:hover {
+    background: #45a049; /* Darker green on hover */
+}
